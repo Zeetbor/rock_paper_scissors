@@ -1,70 +1,53 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<meta charset = "UTF-8">
-<title>Rock Paper Scissors Game</title>
+  <head>
+    <meta charset = "UTF-8">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
 
-<script type="text/javascript">
+<header>
+  <h1> Rock Paper Scissors Game </h1>
+  <h2> "Best of five! - Rock, paper or scissors?" </h2>
+</header>
 
-  let playerSelection = "";
-  let computerSelection = "";
-  let computerScore = 0;
-  let playerScore = 0;
-  let rounds = 5;
 
-  function computerPlay() {
-    const possibleMoves = ["Rock", "Paper", "Scissors"];
-    return possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
-  };
 
-  function game() {
-    for (var rounds = 1; rounds <= 5; rounds++) {
+<body>
 
-      function playRound(computerSelection, playerSelection){
-        computerSelection = computerPlay();
-        playerChoice = window.prompt("Best of five! - Rock, paper or scissors?",
-        "<Choose your weapon!>");
-        playerSelection = playerChoice.charAt(0).toUpperCase() +
-          playerChoice.slice(1).toLowerCase();
+  <main>
+    <div class=score-board>
+      <div id="player" class="label">User</div>
+      <div id="computer" class="label">Comp</div>
+      <span id="player-score">0</span> | <span id="computerscore">0</span>
+    </div>
 
-        let played = "You played: " + playerSelection + " and the computer played: " + computerSelection;
-        let victoryString = ". You win! ";
-        let defeatString = ". You lose! ";
-        let drawString = ". It's a tie! ";
+    <div class ="result">
+      <p>Ready to play?</p>
+    </div>
+  </main>
 
-        if (playerSelection === "Rock" && computerSelection === "Paper" ||
-          playerSelection === "Scissors" && computerSelection === "Rock" ||
-          playerSelection === "Paper" && computerSelection === "Scissors"){
-          computerScore++;
-          return played + defeatString + "Your score: " + playerScore + " | Computer's score: " + computerScore;
+  <div class = "options">
+      <div class = "option">
+        <button class = "btn" id="rock"> Rock </button>
+        <img src = "rock.png">
+      </div>
 
-        } else if (playerSelection === "Rock" && computerSelection === "Scissors"
-          || playerSelection === "Scissors" && computerSelection === "Paper" ||
-          playerSelection === "Paper" && computerSelection === "Rock"){
-          playerScore++;
-          return played + victoryString + "Your score: " + playerScore +
-          " | Computer's score: " + computerScore;
+      <div class = "option">
+        <button class = "btn" id="paper"> Paper </button>
+        <img src = "paper.png">
+      </div>
 
-        } else {
-          return played + drawString + "Your score: " + playerScore +
-          " | Computer's score: " + computerScore;
-        };
+      <div class = "option">
+        <button class = "btn" id="scissors"> Scissors </button>
+        <img src = "scissors.png">
+      </div>
 
-      }; console.log(playRound());
+      <h3 class= "choose"> Select a button to choose your weapon!... </h3>
+  </div>
+<script type="text/javascript" src="script.js"></script>
+</body>
 
-    }; return(score(playerScore, computerScore));
 
-  }; console.log(game());
-
-  function score(playerScore, computerScore) {
-    results = "Final Scores - You scored " + playerScore +
-    " points. Computer scored " + computerScore + " points.";
-      if (playerScore > computerScore) {
-        return results + " You won!"
-      }
-      else {
-        return results + " You lost."
-      }; return score();
-    };
-
-  </script>
 </html>
