@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset = "UTF-8">
+  <title>Rock Paper Scissors Game</title>
+
+  <script type="text/javascript">
+
+
+    let playerSelection = "";
+    let computerSelection = "";
+    let computerScore = 0;
+    let playerScore = 0;
+    let rounds = 5;
+
+
+    function playerPlay(){
+      let playerPrompt = window.prompt("Rock, paper or scissors?",
+      "<Choose your weapon!>");
+
+      let playerChoice() = playerPrompt.charAt(0).toUpperCase() +
+      playerPrompt.slice(1).toLowerCase();
+      console.log(playerChoice());
+
+        if (playerChoice == "Rock"){
+          console.log("Rock, strong and stable!");
+        }
+        else if (playerChoice == "Paper"){
+          console.log("Paper, watch out for papercuts!");
+        }
+        else if (playerChoice == "Scissors"){
+          console.log("Scissors, no running!");
+        }
+        else {
+          console.log("That isn't right...");
+        }
+      return playerPlay();
+      } console.log(playerPlay());
+
+      function computerPlay(){
+        const possibleMoves = ["Rock", "Paper", "Scissors"];
+        return possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
+      };console.log(computerPlay());
+
+
+    function playRound(){
+      const computerSelection = computerPlay();
+      let playerSelection = playerPlay();
+      let played = "You played " + playerSelection + " and the computer played "
+       + computerSelection;
+      let victoryString = ". You win! "
+      let defeatString = ". You lose! "
+      let drawString = ". It's a tie! "
+
+      if (playerSelection === "Rock" && computerSelection === "Paper" ||
+          playerSelection === "Scissors" && computerSelection === "Rock" ||
+          playerSelection === "Paper" && computerSelection === "Scissors"){
+        computerScore++;
+        return played + defeatString + "Your score: " + playerScore +
+        " | Computer score: " + computerScore;
+      }
+      else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+               playerSelection === "Scissors" && computerSelection === "Paper" ||
+               playerSelection === "Paper" && computerSelection === "Rock") {
+        playerScore++;
+        return played + victoryString + "Your score: " + playerScore +
+        " | Computer score: " + computerScore;
+      }
+      else {
+        return played + drawString + "Your score: " + playerScore +
+        " | Computer score: " + computerScore;
+      }
+    } console.log(playRound);
+
+
+    function score(playerScore, computerScore) {
+      results = "You scored " + playerScore + " points. Computer scored "
+      + computerScore + " points.";
+        if (playerScore > computerScore) {
+          return results + " You won!"
+        } else {
+          return results + " You lost."
+        }
+      return score();
+    }
+
+
+    function game() {
+       for (var round = 1; round <= 5; round++) {
+           playerSelection = playerPlay();
+           computerSelection = computerPlay();
+           console.log(playRound(playerChoice, computerChoice));
+       }
+       return(score(playerScore, computerScore));
+   }console.log(game());
+
+
+
+   /*switch(playerChoice) {
+     case "rock":
+                 console.log("Rock, strong and stable!");
+                 break;
+     case "paper":
+                 console.log("Paper, watch out for papercuts!");
+                 break;
+     case "scissors":
+                 console.log("Scissors, no running!");
+                 break;
+     default:
+                 console.log("That isn't right...");
+                 break;
+   } */
+
+
+ /*function playRound(){
+   let computerSelection = computerPlay();
+   let playerSelection = playerPlay();
+   let played = "You played " + playerSelection + " and the computer played "
+    + computerSelection;
+   let victoryString = ". You win! "
+   let defeatString = ". You lose! "
+   let drawString = ". It's a tie! "
+
+   if (player == "Rock" && computerSelection == "Paper"){
+     computerScore++;
+     return played + defeatString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else if (playerChoice == "Rock" && computerChoice == "Scissors"){
+     playerScore++;
+     return played + victoryString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else if (playerChoice == "Scissors" && computerChoice == "Rock"){
+     computerScore++;
+     return played + defeatString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else if (playerChoice == "Scissors" && computerChoice == "Paper"){
+     playerScore++;
+     return played + victoryString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else if (playerChoice == "Paper" && computerChoice == "Scissors"){
+     computerScore++;
+     return played + defeatString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else if (playerChoice == "Paper" && computerChoice == "Rock"){
+     playerScore++;
+     return played + victoryString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   }
+   else {
+     return played + drawString + "Your score: " + playerScore +
+     " | Computer score: " + computerScore;
+   } return playRound;
+ } console.log(playRound);*/
+
+  </script>
+</html>

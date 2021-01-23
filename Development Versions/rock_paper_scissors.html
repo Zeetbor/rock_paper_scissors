@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset = "UTF-8">
+  <title>Rock Paper Scissors Game</title>
+
+  <script type="text/javascript">
+
+    const possibleMoves = [
+      "Rock",
+      "Paper",
+      "Scissors"
+    ];
+
+    let playerSelection = "";
+    let computerSelection = "";
+    let computerScore = 0;
+    let playerScore = 0;
+
+    function playerPlay(playerSelection){
+      return window.prompt("Rock, paper or scissors?");
+    } console.log(playerPlay());
+
+    function computerPlay(){
+      return possibleMoves[Math.floor(Math.random()*possibleMoves.length)]
+    } console.log(computerPlay());
+
+    function playRound(playerSelection, computerSelection){
+      computerSelection = computerPlay();
+      playerSelection = charAt[0].toUpperCase() + playerSelection.slice(1).toLowerCase();
+
+      played = "You played " + playerSelection + " and the computer played " + computerSelection;
+      victoryString = ". You win! "
+      defeatString = ". You lose! "
+      drawString = ". It's a tie! "
+
+      if (playerSelection == "Rock" && computerSelection == "Paper"){
+        computerScore++;
+        return played + defeatString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else if (playerSelection == "Rock" && computerSelection == "Scissors"){
+        playerScore++;
+        return played + victoryString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else if (playerSelection == "Scissors" && computerSelection == "Rock"){
+        computerScore++;
+        return played + defeatString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else if (playerSelection == "Scissors" && computerSelection == "Paper"){
+        playerScore++;
+        return played + victoryString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else if (playerSelection == "Paper" && computerSelection == "Scissors"){
+        computerScore++;
+        return played + defeatString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else if (playerSelection == "Paper" && computerSelection == "Rock"){
+        playerScore++;
+        return played + victoryString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+      else {
+        return played + drawString + "Your score: " + playerScore + " | Computer score: " + computerScore;
+      }
+    }
+
+    function score(playerScore, computerScore) {
+    results = "You scored " + playerScore + " points. Computer scored " + computerScore + " points.";
+    if (playerScore > computerScore) {
+        return results + " You won!"
+    } else {
+        return results + " You lost."
+    }
+
+    function game() {
+       for (var round = 1; round <= 5; round++) {
+           playerSelection = playerPlay();
+           computerSelection = computerPlay();
+           console.log(playRound(playerSelection, computerSelection));
+       }
+       return(score(playerScore, computerScore));
+   }
+
+   console.log(game());
+}
+
+  </script>
+</html>

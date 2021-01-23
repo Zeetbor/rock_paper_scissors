@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<meta charset = "UTF-8">
+<title>Rock Paper Scissors Game</title>
+<link rel="stylesheet" href="main.css">
+
+<script type="text/javascript">
+
+  let playerSelection = "";
+  let computerSelection = "";
+  let computerScore = 0;
+  let playerScore = 0;
+  let rounds = 5;
+
+  function computerPlay() {
+    const possibleMoves = ["Rock", "Paper", "Scissors"];
+    return possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
+  };
+
+  function game() {
+    for (var rounds = 1; rounds <= 5; rounds++) {
+
+      function playRound(computerSelection, playerSelection){
+        computerSelection = computerPlay();
+        playerChoice = window.prompt("Best of five! - Rock, paper or scissors?",
+        "<Choose your weapon!>");
+        playerSelection = playerChoice.charAt(0).toUpperCase() +
+          playerChoice.slice(1).toLowerCase();
+
+        let played = "You played: " + playerSelection + " and the computer played: " + computerSelection;
+        let victoryString = ". You win a point! ";
+        let defeatString = ". Computer wins a point! ";
+        let drawString = ". It's a tie! No points awarded. ";
+
+        if (playerSelection === "Rock" && computerSelection === "Paper" ||
+          playerSelection === "Scissors" && computerSelection === "Rock" ||
+          playerSelection === "Paper" && computerSelection === "Scissors"){
+          computerScore++;
+          return played + defeatString + "Your score: " + playerScore + " | Computer's score: " + computerScore;
+
+        } else if (playerSelection === "Rock" && computerSelection === "Scissors"
+          || playerSelection === "Scissors" && computerSelection === "Paper" ||
+          playerSelection === "Paper" && computerSelection === "Rock"){
+          playerScore++;
+          return played + victoryString + "Your score: " + playerScore +
+          " | Computer's score: " + computerScore;
+
+        } else if (playerSelection === "Rock" && computerSelection === "Rock"
+          || playerSelection === "Scissors" && computerSelection === "Scissors" ||
+          playerSelection === "Paper" && computerSelection === "Paper"){
+          return played + drawString + "Your score: " + playerScore +
+          " | Computer's score: " + computerScore;
+
+        } else {
+          return "Hm, that's not right... ";
+        };
+
+      }; console.log(playRound());
+
+    }; return(score(playerScore, computerScore));
+
+  }; console.log(game());
+
+  function score(playerScore, computerScore) {
+    results = "Final Scores - You scored " + playerScore +
+    " points. Computer scored " + computerScore + " points.";
+      if (playerScore > computerScore) {
+        return results + " You won the game!"
+      } else if (playerScore == computerScore) {
+        return results + "It ended a tie!"
+      }
+      else {
+        return results + " You lost the game."
+      }; return score();
+    };
+
+
+  </script>
+</html>
